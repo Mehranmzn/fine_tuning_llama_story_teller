@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine-Tune LLaMA Story Teller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fine-Tune LLaMA Story Teller</h1>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Overview</h2>
+            <p>This project contains a script for fine-tuning the LLaMA model using a custom dataset and specialized configurations. It leverages advanced techniques like quantization and low-rank adaptation (LoRA) to optimize training and performance.</p>
+        </section>
+
+        <section>
+            <h2>Dependencies</h2>
+            <p>The following dependencies are required:</p>
+            <ul>
+                <li><code>torch</code></li>
+                <li><code>datasets</code></li>
+                <li><code>peft</code></li>
+                <li><code>transformers</code></li>
+                <li><code>trl</code></li>
+            </ul>
+            <p>Install them using <code>pip</code>:</p>
+            <pre><code>pip install torch datasets peft transformers trl</code></pre>
+        </section>
+
+        <section>
+            <h2>Usage</h2>
+            <p>To fine-tune the LLaMA model, run the script:</p>
+            <pre><code>python finetune_llama_story_teller.py</code></pre>
+        </section>
+
+        <section>
+            <h2>Script Details</h2>
+            <ol>
+                <li><strong>Loading Data:</strong> The <code>load_data</code> function fetches the dataset specified by <code>dataset_name</code> and <code>split_name</code>.</li>
+                <li><strong>Tokenization:</strong> The <code>initialize_tokenizer</code> function sets up the tokenizer and configures the padding token.</li>
+                <li><strong>Model Initialization:</strong> The <code>initialize_model</code> function initializes the LLaMA model with 4-bit quantization for efficient computation.</li>
+                <li><strong>LoRA Configuration:</strong> The <code>configure_lora</code> function sets up LoRA for low-rank adaptation to enhance model performance.</li>
+                <li><strong>Training Arguments:</strong> The <code>configure_training_arguments</code> function specifies parameters such as batch size, learning rate, and number of epochs.</li>
+                <li><strong>Training:</strong> The <code>train_model</code> function uses <code>SFTTrainer</code> to fine-tune the model and push the results to the model hub.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Configuration</h2>
+            <ul>
+                <li><strong>Dataset:</strong> The script uses the dataset <code>"2173ars/finetuning_story"</code>. Ensure that you have access to this dataset or modify the <code>dataset_name</code> variable accordingly.</li>
+                <li><strong>Model:</strong> The script uses <code>"meta-llama/Llama-2-7b-hf"</code>. You can replace this with a different model if needed.</li>
+                <li><strong>Training Parameters:</strong> Adjust the training parameters in <code>configure_training_arguments</code> based on your requirements.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contributing</h2>
+            <p>Feel free to open issues or submit pull requests if you have improvements or suggestions.</p>
+        </section>
+
+        <section>
+            <h2>License</h2>
+            <p>This project is licensed under the MIT License. See the <code>LICENSE</code> file for more details.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>For any questions or issues, please open an issue in the repository or contact the maintainers.</p>
+        <p>Happy fine-tuning!</p>
+    </footer>
+</body>
+</html>
